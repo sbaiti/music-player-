@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 const SearchBlock = () => {
     const classes = useStyles();
     return (
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} sm={6} lg={4}>
             <li>
                 <Paper component="form" className={classes.root}>
                     <IconButton className={classes.iconButton} aria-label="menu">

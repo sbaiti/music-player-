@@ -1,7 +1,7 @@
 import { loginSaga } from './signin'
 
-const userSagas = [
+const loginSagas = [
     loginSaga
 ]
 
-export default userSagas
+export default loginSagas

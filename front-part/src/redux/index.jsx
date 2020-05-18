@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux'
 import user from './user'
 import login from './login'
+import music from './music'
 
 const containersReducer = {
     user,
-    login
+    login,
+    music
 }
 
 const appReducer = combineReducers({

@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 require("./middleware/cors")(app);
 
-//app.use("/music", require("./controllers/music"));
+app.use("/music", require("./controllers/music/music"));
 app.use("/user", require("./controllers/user/user"));
 
 mongoose

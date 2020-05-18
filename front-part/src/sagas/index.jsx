@@ -1,6 +1,7 @@
 import { fork, all, call, take } from 'redux-saga/effects'
 import user from './user'
 import login from './login'
+import music from  './music'
 
 export const takeFirst = (pattern, saga, ...args) =>
     fork(function* first() {
@@ -12,7 +13,8 @@ export const takeFirst = (pattern, saga, ...args) =>
 
 const sagas = [
     ...user,
-    ...login
+    ...login,
+    ...music
 ]
 
 function* globalSagas() {

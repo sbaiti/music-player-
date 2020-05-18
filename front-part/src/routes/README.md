@@ -4,8 +4,9 @@
 | ------------------------ | --------------------- | --------- |
 | /                        | Home                  | false     |
 | /signup                  | Signup                | false     |
-| /demande/liste/:status?  | demande               | true      |
-| /login                   | Login                 | false      |
+| /login                   | Login                 | false     |
+| /listes-musics           | playerListSpotify     | false     |
+| //upload-music           | playerListUploaded    | true      |
 | \*                       | /NotFoundPage         | false     |
 
 ```sh

@@ -12,6 +12,7 @@ const instance = axios.create({
 })
 
 export function Get(url, payload) {
+    console.log(payload);
     return new Promise(resolve => {
         resolve(instance.get(url, payload))
     })
