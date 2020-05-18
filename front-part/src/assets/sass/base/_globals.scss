@@ -1,0 +1,144 @@
+.container{
+    padding-top:3vh ;
+}
+.containerAp{
+    max-height: 100vh;
+}
+.spinner {
+    width: 60px;
+    height: 60px;
+    left: 48%;
+    top: 30%;
+    background-color: transparent;
+    position: absolute;
+    text-align: center;
+    animation: sk-rotate 2s infinite linear;
+    z-index: 10000;
+}
+
+.dot1 {
+    width: 60%;
+    height: 60%;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    background-color: $primary;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 100%;
+    animation: sk-bounce 2s infinite ease-in-out;
+}
+
+.dot2 {
+    width: 60%;
+    height: 60%;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    background-color: $secondary;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 100%;
+    animation: sk-bounce 2s infinite ease-in-out;
+    top: auto;
+    bottom: 0;
+    animation-delay: -1s;
+}
+@-webkit-keyframes sk-rotate {
+    100% {
+    }
+}
+
+@keyframes sk-rotate {
+    100% {
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes sk-bounce {
+    0% {
+    }
+
+    100% {
+    }
+
+    50% {
+    }
+}
+
+@keyframes sk-bounce {
+    0% {
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        transform: scale(0);
+    }
+
+    100% {
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        transform: scale(0);
+    }
+
+    50% {
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        transform: scale(1);
+    }
+}
+.nav{
+    height: auto;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #333333;
+    display:flex;
+    justify-content: space-between;
+    color: #CCCCCC;
+    font-size: 14px;
+    box-shadow: 0px 0px 10px 0px;;
+}
+.nav li {
+    padding: 10px 10px;
+}
+
+.left {
+    width:90%;
+    margin: auto;
+    text-align: center;
+    height: auto ;
+}
+.left a {
+    color:$white ;
+    text-decoration: none;
+}
+.nav a:hover {
+    color:$white;
+}
+.logo {
+   // margin: auto;
+    background: linear-gradient(#f70,#f30);
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 11px;
+    border-radius: 3px;
+}
+.right{
+    width: 90%;
+    display:flex;
+    justify-content: space-between;
+    margin: auto; 
+    margin-top: 11px;
+    border-radius: 3px;
+    border: 1px solid $white;
+    margin-bottom: 3px;
+}
+.right a {
+    padding: 5px 10px;
+    border-radius: 4px;
+    color:$white ;
+    text-decoration: none;
+    cursor: pointer;
+}
+.border a {
+    border: 1px solid $white;
+}
+.orange {
+    background-color: $orange;
+    cursor: pointer;
+    color: $white;
+}

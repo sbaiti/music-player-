@@ -1,0 +1,31 @@
+{
+  "name": "music-player",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "front-part-install": "npm install --prefix front-part",
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "front-part": "npm start --prefix front-part",
+    "dev": "concurrently \"npm run server\" \"npm run front-part\""
+  },
+  "keywords": [],
+  "author": "Zohaier",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "bcrypt": "^4.0.1",
+    "body-parser": "^1.19.0",
+    "config": "^3.3.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "joi": "^14.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.14",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "q": "^1.5.1"
+  }
+}

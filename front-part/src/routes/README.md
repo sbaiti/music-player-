@@ -1,0 +1,14 @@
+## Table of available routes
+
+| Path                     | Container             | Connected |
+| ------------------------ | --------------------- | --------- |
+| /                        | Home                  | false     |
+| /signup                  | Signup                | false     |
+| /demande/liste/:status?  | demande               | true      |
+| /login                   | Login                 | false      |
+| \*                       | /NotFoundPage         | false     |
+
+```sh
+Warning
+notFoundPage should be always the last route any route after notFoundPage will be ignored
+```
