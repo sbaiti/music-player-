@@ -1,13 +1,23 @@
 import axios from 'axios'
 import url from './baseUrl.json'
 
+const { appToken } = window.localStorage
+let authorisation = ''
+if (appToken) {
+    authorisation = { Authorization: `Bearer ${appToken}` }
+} else {
+    authorisation = ''
+    console.log('no token')
+}
+
 const instance = axios.create({
     baseURL: url.REACT_APP_BASE_URL,
     headers: {
         'Accept-Version': 1,
         Accept: 'application/json',
         'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json; charset=utf-8',
+        'Content-Type': 'application/json; charset=utf-8,multipart/form-data',
+        ...authorisation
     }
 })
 
