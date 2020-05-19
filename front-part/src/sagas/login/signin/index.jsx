@@ -8,6 +8,7 @@ function* loginSagas({ response }) {
         if (res.status === 200) {
             yield all([
                 yield localStorage.setItem('appToken', res.data.token),
+                yield localStorage.setItem('idUser', res.data.user._id),
                 yield put(loginActions.loginSuccess(res.data))
             ])
         } else {

@@ -2,14 +2,6 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import SkipNextIcon from '@material-ui/icons/SkipNext';
 import hash from "../../shared/hash";
 import GetMusicSpotifyActions from '../../redux/music/getMusicSpotify/index'
 import SpinnerDot from '../../components/ui/spinner/spinnerDot'
@@ -61,12 +53,12 @@ const PlayerList = ({ getMusicSpotifyReq, playLists }) => {
         <div>
             {
                 playLists ? (
-                    <div className="row">
+                    <div className="row" style={{ height: "83vh", overflow: "scroll" }}>
                         <div className="cbs-main-list-item-section-header cbs-clear-fix">
                             <h4 className="main-header ">
                                 <span className="ml-4">
                                     Please choose your Play List
-                    </span>
+                                </span>
                             </h4>
                         </div>
                         <div className="row mt-1">

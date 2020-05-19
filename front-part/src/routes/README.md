@@ -6,7 +6,8 @@
 | /signup                  | Signup                | false     |
 | /login                   | Login                 | false     |
 | /listes-musics           | playerListSpotify     | false     |
-| //upload-music           | playerListUploaded    | true      |
+| /upload-music            | playerListUploaded    | true      |
+| /player-music            | PlayerBar             | true      |
 | \*                       | /NotFoundPage         | false     |
 
 ```sh

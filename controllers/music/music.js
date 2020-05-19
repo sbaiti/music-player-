@@ -1,7 +1,10 @@
-var express = require('express');
-var Router = express.Router();
-var multer = require('multer');
-var MusicServices = require('../../services/music')
+const express = require('express'),
+    Router = express.Router(),
+    multer = require('multer'),
+    MusicServices = require('../../services/music'),
+    passport = require("passport"),
+    Music = require('../../models/music'),
+    path = require('path');
 
 /* storage of audio file */
 var storage = multer.diskStorage({
@@ -10,7 +13,7 @@ var storage = multer.diskStorage({
     },
     filename: (req, file, cb) => {
         const fileName = file.originalname.trim();
-        cb(null, Date.now() + '-' + fileName)
+        cb(null, fileName)
     }
 });
 
@@ -72,16 +75,16 @@ Router.get('/playlists', async (req, res) => {
 
 /* uploaded api */
 Router.post(
-    "/uploaded", upload.single('audio'),
+    "/uploaded", passport.authenticate("jwt", { session: false }), upload.single('audio'),
     (req, res) => {
-        let audio;
+        let audio = {};
         if (req.file)
             audio.file = req.file.filename;
-        MusicServices.addMusic(audio)
+        MusicServices.addMusic({ ...audio, idUser: req.body.idUser })
             .then(musicObject => {
                 res
                     .status(201)
-                    .json({ Room: musicObject, msg: "music added with success" })
+                    .json({ music: musicObject, msg: "music added with success" })
             }
             )
             .catch(err => {
@@ -89,6 +92,30 @@ Router.post(
             });
     }
 );
+
+Router.get("/allMusicUploaded", (req, res) => {
+    Music.find({ idUser: req.query.idUser }, (err, musics) => {
+        if (err)
+            return res.status(404).json({ success: false, msg: [{ err }] })
+        return res.status(200).json({ success: true, musics })
+    })
+})
+
+Router.get('/musicsByName', function (req, res, next) {
+    var options = {
+        root: path.resolve(process.cwd() + '/public/uploads/'),
+        dotfiles: 'deny',
+        headers: {
+            'x-timestamp': Date.now(),
+            'x-sent': true
+        }
+    };
+    var fileName = req.query.audio;
+    res.status(200).sendFile(fileName, options, function (err) {
+        if (err)
+            next(err);
+    });
+});
 
 
 module.exports = Router;

@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 userServices = {};
 userServices.addUser = addUser;
 userServices.login = login;
+userServices.getUserById = getUserById
 userServices.generateToken = generateToken;
 
 async function addUser(user) {
@@ -75,5 +76,19 @@ function generateToken(user) {
     );
     return deferred.promise;
 }
+
+function getUserById(id) {
+    var deferred = Q.defer();
+
+    User.findById({ _id: id }, (err, user) => {
+        if (err) deferred.reject(err);
+        else if (!user) deferred.reject("user with the given ID does not exist");
+        else {
+            deferred.resolve(user);
+        }
+    });
+    return deferred.promise;
+}
+
 
 module.exports = userServices;

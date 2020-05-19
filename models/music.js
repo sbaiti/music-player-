@@ -6,6 +6,10 @@ const musicchema = new Schema({
         type: String,
         required: true,
         maxlength: 70
+    },
+    idUser: {
+        type: String,
+        required: true
     }
 });
 const Music = mongoose.model("Music", musicchema);

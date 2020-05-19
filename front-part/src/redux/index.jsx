@@ -16,7 +16,8 @@ const appReducer = combineReducers({
 export const createGlobalReducer = (state, action) => {
     if (action.type === 'SIGNOUT_REQUEST') {
         state = {}
-        localStorage.setItem('appToken', '')
+        localStorage.setItem('appToken', '');
+        localStorage.setItem('idUser', "")
     }
     return appReducer(state, action)
 }
