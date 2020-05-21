@@ -3,7 +3,7 @@
 
 ### `npm run dev `
 
-POur laner le projet : 
+Pour lancer le projet : 
 
 1/ npm install 
 2/ cd front-part
