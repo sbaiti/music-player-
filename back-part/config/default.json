@@ -1,0 +1,5 @@
+{
+    "dbConfig": "mongodb://zouhaier:13224449Yes@ds157064.mlab.com:57064/decathlon",
+    "port": 4000,
+    "secretOrKey": "secret"
+}

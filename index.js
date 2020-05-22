@@ -1,24 +1,24 @@
-const bodyParser = require('body-parser'),
-    config = require("config"),
+const config = require('./back-part/config/default.json'),
+    bodyParser = require('body-parser'),
     express = require('express'),
-    port = process.env.port || config.get('port'),
+    port = process.env.port || config.port,
     mongoose = require("mongoose"),
     passport = require("passport"),
     app = express();
 
-require("./passport/passportJwt")(passport);
+require("./back-part/passport/passportJwt")(passport);
 passport.initialize();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-require("./middleware/cors")(app);
+require("./back-part/middleware/cors")(app);
 
-app.use("/music", require("./controllers/music/music"));
-app.use("/user", require("./controllers/user/user"));
+app.use("/music", require("./back-part/controllers/music"));
+app.use("/user", require("./back-part/controllers/user"));
 
 mongoose
-    .connect(config.get("dbConfig"), { useNewUrlParser: true })
+    .connect(config.dbConfig, { useNewUrlParser: true })
     .then(() => {
         console.log("data base connected !");
         app.listen(port, () => {

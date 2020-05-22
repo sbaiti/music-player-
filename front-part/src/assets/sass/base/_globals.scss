@@ -468,3 +468,9 @@ progress::-webkit-progress-bar, progress::-moz-progress-bar {
 .icons:hover{
 cursor: pointer;
 }
+.text__no__data{
+  font-size: 20px;
+  text-transform: capitalize;
+  margin-left: 20px;
+  text-decoration: wavy;
+}
