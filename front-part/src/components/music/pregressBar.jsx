@@ -25,8 +25,8 @@ const ProgressBar = ({ audio }) => {
 
 ProgressBar.propTypes = {
     audio: PropTypes.object,
-    history: PropTypes.object.isRequired,
-    index: PropTypes.number.isRequired,
+    history: PropTypes.object,
+    index: PropTypes.number,
     changeCurrentTrackReq: PropTypes.func
 };
 

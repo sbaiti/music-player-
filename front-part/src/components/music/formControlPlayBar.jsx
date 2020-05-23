@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core'
 import SkipNextIcon from '@material-ui/icons/SkipNext';
@@ -7,78 +7,61 @@ import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import PauseCircleOutlineIcon from '@material-ui/icons/PauseCircleOutline';
 import ReplayIcon from '@material-ui/icons/Replay';
 
-class FormControlPlayBar extends React.Component {
-    constructor(props) {
-        super(props)
-
-        document.body.addEventListener('keypress', (e) => {
-            if (e.key === " " && (e.target.tagName !== "INPUT" && e.target.tagName !== "TEXTAREA")) {
-                e.preventDefault();
-                this.togglePlay();
+const FormControlPlayBar = ({ audio, playNextTrack, togglePlay, playPreviewTrack, playing }) => {
+    /* hooks */
+    useEffect(() => {
+        if (audio) {
+            if (playing) {
+                audio.play();
+            } else {
+                audio.pause();
             }
-        });
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (!this.props.audio) return null;
-
-        if (nextProps.playing) {
-            this.props.audio.play();
-        } else {
-            this.props.audio.pause();
         }
+    }, [playing]);
+
+    /* functions */
+
+    const restartAudio = () => {
+        audio.pause();
+        audio.currentTime = 0;
+        audio.play();
     }
 
-    restartAudio = () => {
-        this.props.audio.pause();
-        this.props.audio.currentTime = 0;
-        this.props.audio.play();
-    }
-
-    togglePlay = () => {
-        this.props.togglePlay();
-    }
-
-    toggleLoop = () => {
-        this.props.audio.loop = !this.props.audio.loop;
-    }
-
-    render() {
-        if (!this.props.audio) return null;
-        const togglePlayButton = this.props.playing ?
-            <PauseCircleOutlineIcon
-                fontSize="large"
-                className="icons"
-                onClick={this.togglePlay}
-            /> : <PlayCircleOutlineIcon
-                onClick={this.togglePlay}
-                className="icons"
-                fontSize="large" />;
-
-        return (
-            <div style={{ padding: "7px", textAlign: "center" }}>
-                <Grid>
-                    <SkipPreviousIcon
+    if (!audio) return null;
+    return (
+        <div style={{ padding: "7px", textAlign: "center" }}>
+            <Grid>
+                <SkipPreviousIcon
+                    className="icons"
+                    onClick={playPreviewTrack}
+                    fontSize="large" />
+                {playing ?
+                    <PauseCircleOutlineIcon
+                        fontSize="large"
                         className="icons"
-                        onClick={this.props.playPreviewTrack}
-                        fontSize="large" />
-                    {togglePlayButton}
-                    <SkipNextIcon
+                        onClick={() => togglePlay()}
+                    /> : <PlayCircleOutlineIcon
+                        onClick={() => togglePlay()}
                         className="icons"
-                        onClick={this.props.playNextTrack}
-                        fontSize="large" />
-                    <ReplayIcon
-                        className="icons"
-                        onClick={this.restartAudio}
-                        fontSize="meduim" />
-                </Grid>
-            </div>
-        )
-    }
+                        fontSize="large" />}
+                <SkipNextIcon
+                    className="icons"
+                    onClick={playNextTrack}
+                    fontSize="large" />
+                <ReplayIcon
+                    className="icons"
+                    onClick={restartAudio}
+                    fontSize="small" />
+            </Grid>
+        </div>
+    )
 }
 
 FormControlPlayBar.propTypes = {
-    audio: PropTypes.object
+    audio: PropTypes.object,
+    playPreviewTrack: PropTypes.func,
+    playNextTrack: PropTypes.func,
+    playing: PropTypes.bool
 };
 
 export default FormControlPlayBar;

@@ -1,7 +1,5 @@
 import React, { Fragment, useState } from 'react';
 import ChooseForm from "../../components/home/chooseTracks"
-import hash from "../../shared/hash";
-import PropTypes from 'prop-types';
 
 const Home = () => {
     /*hooks */
@@ -37,10 +35,6 @@ const Home = () => {
             <ChooseForm classes={generateClasses} onChoose={handleChoose} />
         </Fragment>
     );
-};
-
-Home.propTypes = {
-
 };
 
 export default Home;

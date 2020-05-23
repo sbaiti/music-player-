@@ -33,8 +33,8 @@ const UploadMusic = ({ getAllUploadMusicReq, connected, musicTracks, changeCurre
                     <div>
                         <Form />
                     </div>
-                    <div className="row" style={{
-                        height: "60vh", overflowX: "scroll", alignContent: "center", justifyContent: "space-between"
+                    <div style={{
+                        height: "60vh", overflowX: "scroll"
                     }}>
                         {
                             data && data.length > 0 ?
