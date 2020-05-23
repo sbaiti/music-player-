@@ -7,7 +7,6 @@ if (appToken) {
     authorisation = { Authorization: `Bearer ${appToken}` }
 } else {
     authorisation = ''
-    console.log('no token')
 }
 
 const instance = axios.create({

@@ -25,7 +25,7 @@ const UploadMusic = ({ getAllUploadMusicReq, connected, musicTracks, changeCurre
         changeCurrentTrackReq(index)
         history.push("/player-music")
     }
-    console.log(selectedTrack);
+
     return (
         <div>
             {connected ?
@@ -33,21 +33,24 @@ const UploadMusic = ({ getAllUploadMusicReq, connected, musicTracks, changeCurre
                     <div>
                         <Form />
                     </div>
-                    <div className="row" style={{
-                        height: "60vh", overflowX: "scroll", alignContent: "center", justifyContent: "space-between"
+                    <div style={{
+                        height: "60vh", overflowX: "scroll"
                     }}>
                         {
-                            data &&
-                            data.map((track, index) => {
-                                return (
-                                    <MusicForm
-                                        key={track._id}
-                                        index={index}
-                                        track={track}
-                                        selecteTrack={selecteTrackFn}
-                                    />
-                                )
-                            })
+                            data && data.length > 0 ?
+                                data.map((track, index) => {
+                                    return (
+                                        <MusicForm
+                                            key={track._id}
+                                            index={index}
+                                            track={track}
+                                            selecteTrack={selecteTrackFn}
+                                        />
+                                    )
+                                }) :
+                                <div className="text__no__data">
+                                    there are no tracks uploaded yet !!!
+                                </div>
                         }
                     </div>
                 </div>
